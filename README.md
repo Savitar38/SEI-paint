@@ -1,2 +1,2 @@
 # SEI-paint
-Tímový projekt Paint program!Paint?
+Tímový projekt Paint program!
