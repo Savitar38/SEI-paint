@@ -53,6 +53,7 @@ for i in range(8):
     b = tk.Button(image=ikony_subory[i], width=50, command= lambda i=i: prepnut(tlacidla[i]))
     b.grid(row=0, column=i)
 
+#Tu treba vytvoriť nejaký scaler slider aby sme vedeli meniť veľkosť toho co kreslime
 
 
 ## SEM VKLADAJTE VAŠE FUNKCIE ##
@@ -69,12 +70,14 @@ def klik(e):
     ## Do globálnych premenných x a y sa uložia súradnice miesta kliku ##
 
     global x,y
-    x=e.x 
+    x=e.x
     y=e.y
 
 def hyb(e):
-    global x,y
+    x = e.x
+    y = e.y
     global farba
+    global scaler
 
     ## Do každej funkcie, ktorá niečo kreslí, máte 3 vstupy: originálne súradnice kliku, súradnice aktuálnej pozície stlačenej myše a farbu ##
 
@@ -91,7 +94,7 @@ def hyb(e):
         ciara(x, y, e.x, e.y, farba)
 
     elif prepinac == "stetec":
-        stetec(x, y, e.x, e.y, farba)
+        plocha.create_oval(x-1*scaler, y-1*scaler, x+1*scaler, y+1*scaler, fill = str(farba))
 
 plocha.bind("<Button-1>",klik)
 plocha.bind("<B1-Motion>",hyb)
