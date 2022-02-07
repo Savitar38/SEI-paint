@@ -82,7 +82,7 @@ def hyb(e):
         sprej(x, y, e.x, e.y, farba)
 
     elif prepinac == "stvorec":
-        stvorec(x, y, e.x, e.y, farba)
+        plocha.create_rectangle(x, y, e.x, e.y, fill = farba)
 
     elif prepinac == "kruh":
         kruh(x, y, e.x, e.y, farba)
