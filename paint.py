@@ -12,7 +12,7 @@ farba = "#000"
 ikony = ["sprej.png", "stvorec.png", "kruh.png", "farba.png", "ciara.png", "stetec.png", "vymazat.png", "ulozit.png"]
 tlacidla = ["sprej", "stvorec", "kruh", "farba", "ciara", "stetec", "vymazat", "ulozit"]
 
-plocha = tk.Canvas(width=440, height=400, bg="red")
+plocha = tk.Canvas(width=440, height=400, bg="white")
 plocha.grid(row=1, column=0, columnspan=8)
 
 def prepnut(volba):
@@ -30,7 +30,7 @@ def prepnut(volba):
 
     if prepinac == "farba":
         global farba
-        farba = colorchooser.askcolor(title ="Vyber farbu") # Output je v hexadecimálnej sústave
+        rgb, farba = colorchooser.askcolor(title ="Vyber farbu") # Output je v hexadecimálnej sústave
         prepinac = ""
 
     elif prepinac == "vymazat":
@@ -48,21 +48,17 @@ for i in range(8):
     img = tk.PhotoImage(file=f"./icons/{ikony[i]}")
     ikony_subory.append(img)
 
+# kód pre testovanie s jednou ikonou
+# 
+# for i in range(8):
+#     img = tk.PhotoImage(file=f"./icons/logo.png")
+#     ikony_subory.append(img)
+
 
 for i in range(8):
     b = tk.Button(image=ikony_subory[i], width=50, command= lambda i=i: prepnut(tlacidla[i]))
     b.grid(row=0, column=i)
 
-
-
-## SEM VKLADAJTE VAŠE FUNKCIE ##
-
-
-
-
-
-
-## -------------------------- ##
 
 def klik(e):
 
@@ -72,6 +68,7 @@ def klik(e):
     x=e.x 
     y=e.y
 
+
 def hyb(e):
     global x,y
     global farba
@@ -79,21 +76,41 @@ def hyb(e):
     ## Do každej funkcie, ktorá niečo kreslí, máte 3 vstupy: originálne súradnice kliku, súradnice aktuálnej pozície stlačenej myše a farbu ##
 
     if prepinac == "sprej":
-        sprej(x, y, e.x, e.y, farba)
+        pass
 
     elif prepinac == "stvorec":
+        plocha.delete("stvorec")
+        plocha.create_rectangle(x, y, e.x, e.y, fill = farba, outline = farba, tag = "stvorec")
+
+    elif prepinac == "kruh":
+        pass
+
+    elif prepinac == "ciara":
+        pass
+
+    elif prepinac == "stetec":
+        plocha.create_oval(e.x-10, e.y-10, e.x+10, e.y+10, fill = farba, outline = farba)
+
+def umiestnit(e):
+    global x,y
+    global farba
+
+    ## Do každej funkcie, ktorá niečo kreslí, máte 3 vstupy: originálne súradnice kliku, súradnice aktuálnej pozície stlačenej myše a farbu ##
+
+    if prepinac == "stvorec":
         plocha.create_rectangle(x, y, e.x, e.y, fill = farba)
 
     elif prepinac == "kruh":
-        kruh(x, y, e.x, e.y, farba)
+        # kruh(x, y, e.x, e.y, farba)
+        pass
 
     elif prepinac == "ciara":
-        ciara(x, y, e.x, e.y, farba)
-
-    elif prepinac == "stetec":
-        stetec(x, y, e.x, e.y, farba)
+        # ciara(x, y, e.x, e.y, farba)
+        pass
 
 plocha.bind("<Button-1>",klik)
 plocha.bind("<B1-Motion>",hyb)
+plocha.bind("<ButtonRelease-1>", umiestnit)
+
 
 window.mainloop()
