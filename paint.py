@@ -86,7 +86,8 @@ def hyb(e):
         pass
 
     elif prepinac == "ciara":
-        pass
+        plocha.delete("ciara")
+        plocha.create_line(x, y, e.x, e.y, fill=farba, tag="ciara")
 
     elif prepinac == "stetec":
         plocha.create_oval(e.x-10, e.y-10, e.x+10, e.y+10, fill = farba, outline = farba)
@@ -105,8 +106,7 @@ def umiestnit(e):
         pass
 
     elif prepinac == "ciara":
-        # ciara(x, y, e.x, e.y, farba)
-        pass
+        plocha.create_line(x, y, e.x, e.y, fill =farba)
 
 plocha.bind("<Button-1>",klik)
 plocha.bind("<B1-Motion>",hyb)
