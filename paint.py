@@ -86,7 +86,8 @@ def hyb(e):
         plocha.create_rectangle(x, y, e.x, e.y, fill = farba, outline = farba, tag = "stvorec")
 
     elif prepinac == "kruh":
-        pass
+        plocha.delete("kruh")
+        plocha.create_oval(x, y, e.x, e.y, fill=farba, outline=farba, tag="kruh")
 
     elif prepinac == "ciara":
         plocha.delete("ciara")
@@ -105,8 +106,7 @@ def umiestnit(e):
         plocha.create_rectangle(x, y, e.x, e.y, fill = farba)
 
     elif prepinac == "kruh":
-        # kruh(x, y, e.x, e.y, farba)
-        pass
+        plocha.create_oval(x, y, e.x, e.y, fill = farba))
 
     elif prepinac == "ciara":
         plocha.create_line(x, y, e.x, e.y, fill =farba)
