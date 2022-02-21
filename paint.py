@@ -76,6 +76,10 @@ def hyb(e):
     ## Do každej funkcie, ktorá niečo kreslí, máte 3 vstupy: originálne súradnice kliku, súradnice aktuálnej pozície stlačenej myše a farbu ##
 
     if prepinac == "sprej":
+                for i in range(100):
+            sx = rand.randint(-13, 13)
+            sy = rand.randint(-13, 13)
+            plocha.create_line(e.x+sx, e.y+sy, e.x+sx+1, e.y+sy, fill=farba)
         pass
 
     elif prepinac == "stvorec":
