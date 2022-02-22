@@ -5,6 +5,7 @@ from PIL import Image
 from tkinter.filedialog import asksaveasfile
 
 window = tk.Tk()
+window.title("Paint")
 
 x = 0
 y = 0
